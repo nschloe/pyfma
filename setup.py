@@ -127,7 +127,6 @@ setup(
     author=__author__,
     author_email=__author_email__,
     install_requires=[
-        'numpy',
         'pybind11 >= 2.2',
         ],
     description='Fused multiply-add for Python',
