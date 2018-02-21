@@ -3,13 +3,13 @@ version: 2
 jobs:
 
   build:
-    working_directory: ~/pygalmesh
+    working_directory: ~/pyfma
     docker:
       - image: ubuntu:18.04
     steps:
       - run: apt-get update
-      - run: apt-get install -y libcgal-dev libeigen3-dev pandoc python3-pip clang++-6.0
-      - run: pip3 install -U pytest pytest-cov pylint meshio pybind11
+      - run: apt-get install -y pandoc python3-pip
+      - run: pip3 install -U pytest pytest-cov pylint pybind11
       - checkout
       # lint
       - run: pylint setup.py test/*.py
@@ -17,7 +17,6 @@ jobs:
       - run: pip3 install docutils pygments
       - run: make README.rst
       # install
-      # Use clang++ for its smaller memory footprint.
-      - run: CC="clang++-6.0" pip3 install .
+      - run: pip3 install .
       # The actual test
       - run: cd test/ && pytest
