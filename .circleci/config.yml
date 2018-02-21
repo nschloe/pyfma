@@ -15,6 +15,7 @@ jobs:
       - run: pip3 install docutils pygments
       - run: make README.rst
       # install
+      - run: pip3 install -r test_requirements
       - run: pip3 install .
       # lint
       - run: pylint setup.py test/*.py
