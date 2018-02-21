@@ -1,0 +1,10 @@
+*.off
+*.vtu
+*.mesh
+.cache/
+build/
+dist/
+MANIFEST
+README.rst
+do-configure.sh
+.pytest_cache/
