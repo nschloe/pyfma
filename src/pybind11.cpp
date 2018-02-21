@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
 namespace py = pybind11;
 
 
@@ -9,5 +10,5 @@ double fma_wrap(double x, double y, double z) {
 }
 
 PYBIND11_MODULE(pyfma, m) {
-  m.def("fma", &fma_wrap, "Fused multiply-add");
+  m.def("fma", py::vectorize(fma_wrap));
 }
