@@ -2,6 +2,11 @@
 
 Fused multiply-add for Python.
 
+[![CircleCI](https://img.shields.io/circleci/project/github/nschloe/pyfma/master.svg)](https://circleci.com/gh/nschloe/pyfma/tree/master)
+[![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg)](https://pypi.python.org/pypi/pyfma)
+[![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?style=social&label=Stars)](https://github.com/nschloe/pyfma)
+
+
 ### Installation
 
 pyfma can be [installed from the Python Package
