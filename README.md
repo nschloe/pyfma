@@ -4,6 +4,7 @@
 for Python.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/pyfma/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/pyfma/tree/master)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
 [![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg?style=flat-square)](https://pypi.python.org/pypi/pyfma)
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/pyfma)
 
