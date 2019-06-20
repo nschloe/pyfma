@@ -1,23 +1,35 @@
 version: 2
 
 jobs:
-
+  lint:
+    docker:
+      - image: ubuntu:18.04
+    steps:
+      - checkout
+      - run: apt update
+      - run: apt install -y python3-pip
+      - run: pip3 install -U black flake8
+      - run: LC_ALL=C.UTF-8 black --check setup.py pyfma/ test/*.py
+      - run: flake8 setup.py pyfma/ test/*.py
   build:
     working_directory: ~/pyfma
     docker:
       - image: ubuntu:18.04
     steps:
-      - run: apt-get update
-      - run: apt-get install -y pandoc python3-pip
-      - run: pip3 install -U pytest pytest-cov pylint pybind11
       - checkout
-      # make sure that rst converts correctly
-      - run: pip3 install docutils pygments
-      - run: make README.rst
+      - run: apt-get update
+      - run: apt-get install -y python3-pip
+      - run: pip3 install -U pytest pytest-cov pybind11
       # install
       - run: pip3 install -r test_requirements.txt
       - run: pip3 install .
-      # lint
-      - run: pylint setup.py test/*.py
       # The actual test
       - run: cd test/ && pytest
+
+
+workflows:
+  version: 2
+  lint_and_build:
+    jobs:
+      - lint
+      - build
