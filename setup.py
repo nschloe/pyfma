@@ -1,75 +1,69 @@
 # -*- coding: utf-8 -*-
 #
+import codecs
 import os
 import sys
 
-import codecs
 import setuptools
-from setuptools import setup, Extension
+from setuptools import Extension, setup
 from setuptools.command.build_ext import build_ext
 
-
-__version__ = '0.1.0'
-__author__ = u'Nico Schlömer'
-__author_email__ = 'nico.schloemer@gmail.com'
-__status__ = 'Development Status :: 3 - Alpha'
-__license__ = 'License :: OSI Approved :: MIT License'
-__url__ = 'https://github.com/nschloe/pyfma'
+# https://packaging.python.org/single_source_version/
+base_dir = os.path.abspath(os.path.dirname(__file__))
+about = {}
+with open(os.path.join(base_dir, "pyfma", "__about__.py"), "rb") as handle:
+    exec(handle.read(), about)
 
 
 # https://github.com/pybind/python_example/blob/master/setup.py
 class BuildExt(build_ext):
-    '''A custom build extension for adding compiler-specific options.'''
-    c_opts = {
-        'msvc': ['/EHsc'],
-        'unix': [],
-        }
+    """A custom build extension for adding compiler-specific options."""
 
-    if sys.platform == 'darwin':
-        c_opts['unix'] += ['-stdlib=libc++', '-mmacosx-version-min=10.7']
+    c_opts = {"msvc": ["/EHsc"], "unix": []}
+
+    if sys.platform == "darwin":
+        c_opts["unix"] += ["-stdlib=libc++", "-mmacosx-version-min=10.7"]
 
     def build_extensions(self):
         ct = self.compiler.compiler_type
         opts = self.c_opts.get(ct, [])
-        if ct == 'unix':
-            opts.append(
-                '-DVERSION_INFO=\'%s\'' % self.distribution.get_version()
-                )
+        if ct == "unix":
+            opts.append("-DVERSION_INFO='%s'" % self.distribution.get_version())
             opts.append(cpp_flag(self.compiler))
-            if has_flag(self.compiler, '-fvisibility=hidden'):
-                opts.append('-fvisibility=hidden')
-        elif ct == 'msvc':
-            opts.append(
-                '/DVERSION_INFO=\'%s\'' % self.distribution.get_version()
-                )
+            if has_flag(self.compiler, "-fvisibility=hidden"):
+                opts.append("-fvisibility=hidden")
+        elif ct == "msvc":
+            opts.append("/DVERSION_INFO='%s'" % self.distribution.get_version())
         for ext in self.extensions:
             ext.extra_compile_args = opts
         build_ext.build_extensions(self)
 
 
 class get_pybind_include(object):
-    '''Helper class to determine the pybind11 include path
-    The purpose of this class is to postpone importing pybind11
-    until it is actually installed, so that the ``get_include()``
-    method can be invoked.
-    '''
+    """Helper class to determine the pybind11 include path The purpose of this class is
+    to postpone importing pybind11 until it is actually installed, so that the
+    ``get_include()`` method can be invoked.
+    """
+
     def __init__(self, user=False):
         self.user = user
 
     def __str__(self):
         import pybind11
+
         return pybind11.get_include(self.user)
 
 
 # As of Python 3.6, CCompiler has a `has_flag` method.
 # cf http://bugs.python.org/issue26689
 def has_flag(compiler, flagname):
-    '''Return a boolean indicating whether a flag name is supported on
-    the specified compiler.
-    '''
+    """Return a boolean indicating whether a flag name is supported on the specified
+    compiler.
+    """
     import tempfile
-    with tempfile.NamedTemporaryFile('w', suffix='.cpp') as f:
-        f.write('int main (int argc, char **argv) { return 0; }')
+
+    with tempfile.NamedTemporaryFile("w", suffix=".cpp") as f:
+        f.write("int main (int argc, char **argv) { return 0; }")
         try:
             compiler.compile([f.name], extra_postargs=[flagname])
         except setuptools.distutils.errors.CompileError:
@@ -78,69 +72,59 @@ def has_flag(compiler, flagname):
 
 
 def cpp_flag(compiler):
-    '''Return the -std=c++[11/14] compiler flag.
+    """Return the -std=c++[11/14] compiler flag.
     The c++14 is preferred over c++11 (when it is available).
-    '''
-    if has_flag(compiler, '-std=c++14'):
-        return '-std=c++14'
-    elif has_flag(compiler, '-std=c++11'):
-        return '-std=c++11'
+    """
+    if has_flag(compiler, "-std=c++14"):
+        return "-std=c++14"
+    elif has_flag(compiler, "-std=c++11"):
+        return "-std=c++11"
     else:
-        raise RuntimeError('Unsupported compiler -- at least C++11 support '
-                           'is needed!')
+        raise RuntimeError(
+            "Unsupported compiler -- at least C++11 support " "is needed!"
+        )
 
 
 def read(fname):
-    # `pip install` doesn't generate README.rst and fails, so intercept with
-    # try-execpt.
-    try:
-        content = codecs.open(
-            os.path.join(os.path.dirname(__file__), fname),
-            encoding='utf-8'
-            ).read()
-    except IOError:
-        content = ''
-    return content
+    return codecs.open(os.path.join(base_dir, fname), encoding="utf-8").read()
 
 
-ext_modules = [Extension(
-    'pyfma',
-    [
-        'src/pybind11.cpp',
-    ],
-    language='c++',
-    include_dirs=[
-        # Path to pybind11 headers
-        get_pybind_include(),
-        get_pybind_include(user=True)
+ext_modules = [
+    Extension(
+        "pyfma",
+        ["src/pybind11.cpp"],
+        language="c++",
+        include_dirs=[
+            # Path to pybind11 headers
+            get_pybind_include(),
+            get_pybind_include(user=True),
         ],
-    )]
+    )
+]
 
 setup(
-    name='pyfma',
-    cmdclass={'build_ext': BuildExt},
+    name="pyfma",
+    cmdclass={"build_ext": BuildExt},
     ext_modules=ext_modules,
-    package_dir={'': 'src'},
-    version=__version__,
-    url=__url__,
-    download_url='https://pypi.python.org/pypi/pyfma',
-    author=__author__,
-    author_email=__author_email__,
-    install_requires=[
-        'pybind11 >= 2.2',
-        ],
-    description='Fused multiply-add for Python',
-    long_description=read('README.rst'),
-    license=__license__,
+    package_dir={"": "src"},
+    version=about["__version__"],
+    url=about["__url__"],
+    author=about["__author__"],
+    author_email=about["__author_email__"],
+    install_requires=["pybind11 >= 2.2"],
+    description="Fused multiply-add for Python",
+    long_description=read("README.md"),
+    long_description_content_type="text/markdown",
+    license=about["__license__"],
     classifiers=[
-        __status__,
-        __license__,
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3',
-        'Topic :: Scientific/Engineering',
-        'Topic :: Scientific/Engineering :: Mathematics',
-        'Topic :: Software Development :: Libraries',
-        ]
-    )
+        about["__status__"],
+        about["__license__"],
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
+        "Programming Language :: Python :: 3",
+        "Topic :: Scientific/Engineering",
+        "Topic :: Scientific/Engineering :: Mathematics",
+        "Topic :: Software Development :: Libraries",
+    ],
+)

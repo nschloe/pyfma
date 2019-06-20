@@ -9,6 +9,6 @@ double fma_wrap(double x, double y, double z) {
   return fma(x, y, z);
 }
 
-PYBIND11_MODULE(pyfma, m) {
+PYBIND11_MODULE(_pyfma, m) {
   m.def("fma", py::vectorize(fma_wrap));
 }

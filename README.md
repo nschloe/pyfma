@@ -6,7 +6,7 @@ for Python.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/pyfma/master.svg)](https://circleci.com/gh/nschloe/pyfma/tree/master)
 [![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg)](https://pypi.python.org/pypi/pyfma)
-[![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?style=social&label=Stars)](https://github.com/nschloe/pyfma)
+[![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/pyfma)
 
 Fused multiply-add computes `(x*y) + z` with a _single rounding_. Useful for dot
 products, matrix multiplications, polynomial evaluations (e.g., with Horner's
@@ -51,7 +51,7 @@ you can install/upgrade.
 For manual installation (if you're a developer or just really keen on getting
 the bleeding edge version of pyfma), there are two possibilities:
 
- * Get the sources, type `sudo python setup.py install`. This does the trick
+ * Get the sources, type `python3 setup.py install`. This does the trick
    most the time.
  * As a fallback, there's a CMake-based installation. Simply go `cmake
    /path/to/sources/` and `make`.
