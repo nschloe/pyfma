@@ -41,14 +41,14 @@ Built with [pybind11](https://github.com/pybind/pybind11).
 pyfma can be [installed from the Python Package
 Index](https://pypi.python.org/pypi/pyfma/), so with
 ```
-pip install -U pyfma
+pip3 install pyfma --user
 ```
 you can install/upgrade.
 
 #### Manual installation
 
-For manual installation (if you're a developer or just really keen on getting
-the bleeding edge version of pyfma), there are two possibilities:
+For manual installation (if you're a developer or just really keen on getting the
+bleeding edge version of pyfma), there are two possibilities:
 
  * Get the sources, type `python3 setup.py install`. This does the trick
    most the time.

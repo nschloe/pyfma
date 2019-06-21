@@ -5,7 +5,7 @@ import os
 import sys
 
 import setuptools
-from setuptools import Extension, setup
+from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext
 
 # https://packaging.python.org/single_source_version/
@@ -104,6 +104,7 @@ ext_modules = [
 
 setup(
     name="pyfma",
+    packages=find_packages(),
     cmdclass={"build_ext": BuildExt},
     ext_modules=ext_modules,
     package_dir={"": "src"},
