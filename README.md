@@ -1,26 +1,25 @@
 # pyfma
 
-[Fused
-multiply-add](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation#Fused_multiply%E2%80%93add)
+[Fused multiply-add](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation#Fused_multiply%E2%80%93add)
 for Python.
 
-[![CircleCI](https://img.shields.io/circleci/project/github/nschloe/pyfma/master.svg)](https://circleci.com/gh/nschloe/pyfma/tree/master)
-[![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg)](https://pypi.python.org/pypi/pyfma)
-[![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?style=social&label=Stars)](https://github.com/nschloe/pyfma)
+[![CircleCI](https://img.shields.io/circleci/project/github/nschloe/pyfma/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/pyfma/tree/master)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
+[![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg?style=flat-square)](https://pypi.python.org/pypi/pyfma)
+[![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/pyfma)
 
 Fused multiply-add computes `(x*y) + z` with a _single rounding_. Useful for dot
-products, matrix multiplications, polynomial evaluations (e.g., with Horner's
-rule), Newton's method for evaluating functions, convolutions, artificial
-neural networks etc.
+products, matrix multiplications, polynomial evaluations (e.g., with Horner's rule),
+Newton's method for evaluating functions, convolutions, artificial neural networks etc.
 
 Use as
-```
+```python
 import pyfma
 
 out = pyfma.fma(3.0, 2.0, 1.0)  # 3.0*2.0 + 1.0 = 7.0
 ```
 Also works with NumPy inputs:
-```
+```python
 import numpy
 import pyfma
 
@@ -42,16 +41,16 @@ Built with [pybind11](https://github.com/pybind/pybind11).
 pyfma can be [installed from the Python Package
 Index](https://pypi.python.org/pypi/pyfma/), so with
 ```
-pip install -U pyfma
+pip3 install pyfma --user
 ```
 you can install/upgrade.
 
 #### Manual installation
 
-For manual installation (if you're a developer or just really keen on getting
-the bleeding edge version of pyfma), there are two possibilities:
+For manual installation (if you're a developer or just really keen on getting the
+bleeding edge version of pyfma), there are two possibilities:
 
- * Get the sources, type `sudo python setup.py install`. This does the trick
+ * Get the sources, type `python3 setup.py install`. This does the trick
    most the time.
  * As a fallback, there's a CMake-based installation. Simply go `cmake
    /path/to/sources/` and `make`.
@@ -62,17 +61,6 @@ To run the pyfma unit tests, check out this repository and type
 ```
 pytest
 ```
-
-### Distribution
-
-To create a new release
-
-1. bump the `__version__` number (in `setup.py` _and_ `src/pyfma.i`)
-
-2. publish to PyPi and GitHub:
-    ```
-    make publish
-    ```
 
 ### License
 
