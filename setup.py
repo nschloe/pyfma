@@ -91,7 +91,7 @@ def read(fname):
 
 ext_modules = [
     Extension(
-        "pyfma",
+        "_pyfma",
         ["src/pybind11.cpp"],
         language="c++",
         include_dirs=[
