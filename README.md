@@ -4,7 +4,7 @@
 for Python.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/nschloe/pyfma/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/pyfma/tree/master)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/ambv/black)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
 [![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg?style=flat-square)](https://pypi.python.org/pypi/pyfma)
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/pyfma)
 
@@ -41,7 +41,7 @@ Built with [pybind11](https://github.com/pybind/pybind11).
 pyfma can be [installed from the Python Package
 Index](https://pypi.python.org/pypi/pyfma/), so with
 ```
-pip3 install pyfma --user
+pip install pyfma
 ```
 you can install/upgrade.
 
@@ -50,8 +50,7 @@ you can install/upgrade.
 For manual installation (if you're a developer or just really keen on getting the
 bleeding edge version of pyfma), there are two possibilities:
 
- * Get the sources, type `python3 setup.py install`. This does the trick
-   most the time.
+ * Get the sources, do `pip install .`. This does the trick most the time.
  * As a fallback, there's a CMake-based installation. Simply go `cmake
    /path/to/sources/` and `make`.
 
@@ -63,5 +62,4 @@ pytest
 ```
 
 ### License
-
 pyfma is published under the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
