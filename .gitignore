@@ -10,3 +10,4 @@ do-configure.sh
 .pytest_cache/
 tmp/
 *.egg-info/
+.tox/
