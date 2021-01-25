@@ -26,9 +26,10 @@ clean:
 	@rm -rf *.egg-info/ build/ dist/
 
 format:
-	isort -rc .
-	black setup.py pyfma/ test/*.py
+	isort .
+	black .
+	blacken-docs README.md
 
 lint:
-	black --check setup.py pyfma/ test/*.py
-	flake8 setup.py pyfma/ test/*.py
+	black --check .
+	flake8 .
