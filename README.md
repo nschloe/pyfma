@@ -3,10 +3,14 @@
 [Fused multiply-add](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation#Fused_multiply%E2%80%93add)
 for Python.
 
-[![CircleCI](https://img.shields.io/circleci/project/github/nschloe/pyfma/master.svg?style=flat-square)](https://circleci.com/gh/nschloe/pyfma/tree/master)
+[![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg?style=flat-square)](https://pypi.org/project/pyfma)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/pyfma.svg?style=flat-square)](https://pypi.org/pypi/pyfma/)
+[![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/pyfma)
+[![PyPi downloads](https://img.shields.io/pypi/dm/pyfma.svg?style=flat-square)](https://pypistats.org/packages/pyfma)
+
+[![gh-actions](https://img.shields.io/github/workflow/status/nschloe/pyfma/ci?style=flat-square)](https://github.com/nschloe/pyfma/actions?query=workflow%3Aci)
+[![codecov](https://img.shields.io/codecov/c/github/nschloe/pyfma.svg?style=flat-square)](https://codecov.io/gh/nschloe/pyfma)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
-[![PyPi Version](https://img.shields.io/pypi/v/pyfma.svg?style=flat-square)](https://pypi.python.org/pypi/pyfma)
-[![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?logo=github&label=Stars&logoColor=white&style=flat-square)](https://github.com/nschloe/pyfma)
 
 Fused multiply-add computes `(x*y) + z` with a _single rounding_. Useful for dot
 products, matrix multiplications, polynomial evaluations (e.g., with Horner's rule),
