@@ -64,7 +64,7 @@ bleeding edge version of pyfma), there are two possibilities:
 
 To run the pyfma unit tests, check out this repository and type
 ```
-pytest
+tox
 ```
 
 ### License
