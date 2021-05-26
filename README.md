@@ -8,6 +8,8 @@ for Python.
 [![GitHub stars](https://img.shields.io/github/stars/nschloe/pyfma.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/pyfma)
 [![PyPi downloads](https://img.shields.io/pypi/dm/pyfma.svg?style=flat-square)](https://pypistats.org/packages/pyfma)
 
+[![Discord](https://img.shields.io/static/v1?logo=discord&label=chat&message=on%20discord&color=7289da&style=flat-square)](https://discord.gg/hnTJ5MRX2Y)
+
 [![gh-actions](https://img.shields.io/github/workflow/status/nschloe/pyfma/ci?style=flat-square)](https://github.com/nschloe/pyfma/actions?query=workflow%3Aci)
 [![codecov](https://img.shields.io/codecov/c/github/nschloe/pyfma.svg?style=flat-square)](https://codecov.io/gh/nschloe/pyfma)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
@@ -62,7 +64,7 @@ bleeding edge version of pyfma), there are two possibilities:
 
 To run the pyfma unit tests, check out this repository and type
 ```
-pytest
+tox
 ```
 
 ### License

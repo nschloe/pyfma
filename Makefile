@@ -20,9 +20,7 @@ publish: tag upload
 
 clean:
 	@find . | grep -E "(__pycache__|\.pyc|\.pyo$\)" | xargs rm -rf
-	@rm -rf build/*
-	@rm -rf *.egg-info/
-	@rm -rf dist/
+	@rm -rf build/* src/*.egg-info/ dist/ .tox/
 
 format:
 	isort .

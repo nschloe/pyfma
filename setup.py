@@ -5,9 +5,7 @@ from setuptools import setup
 ext_modules = [
     Pybind11Extension(
         "_pyfma",
-        # Sort input source files to ensure bit-for-bit reproducible builds
-        # (https://github.com/pybind/python_example/pull/53)
-        ["src/pybind11.cpp"],
+        ["cpp/pybind11.cpp"],
     )
 ]
 
