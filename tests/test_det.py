@@ -11,7 +11,7 @@ def test_determinant():
     d = 23225 / 8544
     naive = a * d - b * c
 
-    ref = -7.039440870215685e-07
+    ref = -7.039440876218302263286205e-7
     assert abs(naive - ref) < 1.0e-13
 
     w = b * c
@@ -19,5 +19,5 @@ def test_determinant():
     f = pyfma.fma(a, d, -w)
     kahan = f + e
 
-    ref = -7.039440870215685e-07
+    ref = -7.039440876218302263286205e-7
     assert abs(kahan - ref) < 1.0e-13
