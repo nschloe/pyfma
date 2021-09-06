@@ -1,4 +1,4 @@
-from _pyfma import fma
+from ._main import fma
 
 from .__about__ import __version__
 
