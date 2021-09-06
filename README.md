@@ -66,6 +66,3 @@ To run the pyfma unit tests, check out this repository and type
 ```
 tox
 ```
-
-### License
-pyfma is published under the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
