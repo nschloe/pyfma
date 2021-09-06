@@ -9,7 +9,7 @@ def test_fma():
     assert out == 7.0
 
 
-@pytest.mark.parametrize("dtype", [np.float32, np.double, np.longdouble])
+@pytest.mark.parametrize("dtype", [np.single, np.double, np.longdouble])
 def test_numpy(dtype):
     print(dtype)
     x = np.full((2, 3, 4), 3.0, dtype=dtype)
