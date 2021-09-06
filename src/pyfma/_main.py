@@ -12,7 +12,7 @@ def fma(a: ArrayLike, b: ArrayLike, c: ArrayLike) -> np.ndarray:
     b = b.astype(dtype)
     c = c.astype(dtype)
 
-    if dtype == np.float32:
+    if dtype == np.single:
         return _pyfma.fmaf(a, b, c)
     elif dtype == np.double:
         return _pyfma.fma(a, b, c)

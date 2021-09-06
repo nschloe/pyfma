@@ -11,8 +11,7 @@ tag:
 
 upload: clean
 	@if [ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then exit 1; fi
-	# https://stackoverflow.com/a/58756491/353337
-	python3 -m build --sdist --wheel .
+	python3 -m build --sdist .
 	twine upload dist/*.tar.gz
 
 publish: tag upload
