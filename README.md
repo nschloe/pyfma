@@ -19,12 +19,15 @@ products, matrix multiplications, polynomial evaluations (e.g., with Horner's ru
 Newton's method for evaluating functions, convolutions, artificial neural networks etc.
 
 Use as
+
 ```python
 import pyfma
 
 out = pyfma.fma(3.0, 2.0, 1.0)  # 3.0*2.0 + 1.0 = 7.0
 ```
+
 Also works with NumPy inputs:
+
 ```python
 import numpy
 import pyfma
@@ -39,16 +42,18 @@ out = pyfma.fma(x, y, z)
 Built with [pybind11](https://github.com/pybind/pybind11).
 
 > **Caution**
-> The C/C++ implementation of FMA in *MS Windows* is [reportedly
+> The C/C++ implementation of FMA in _MS Windows_ is [reportedly
 > broken](https://bugs.python.org/msg312480). Use with care.
 
 ### Installation
 
 pyfma can be [installed from the Python Package
 Index](https://pypi.python.org/pypi/pyfma/), so with
+
 ```
 pip install pyfma
 ```
+
 you can install/upgrade.
 
 #### Manual installation
@@ -56,13 +61,13 @@ you can install/upgrade.
 For manual installation (if you're a developer or just really keen on getting the
 bleeding edge version of pyfma), there are two possibilities:
 
- * Get the sources, do `pip install .`. This does the trick most the time.
- * As a fallback, there's a CMake-based installation. Simply go `cmake
-   /path/to/sources/` and `make`.
+- Get the sources, do `pip install .`. This does the trick most the time.
+- As a fallback, there's a CMake-based installation. Simply go `cmake /path/to/sources/` and `make`.
 
 ### Testing
 
 To run the pyfma unit tests, check out this repository and type
+
 ```
 tox
 ```
